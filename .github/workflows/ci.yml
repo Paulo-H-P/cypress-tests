@@ -4,7 +4,18 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
+      - name: Checkout código
         uses: actions/checkout@v4
-      - name: Cypress run
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18  # Ou a versão que você está usando no projeto
+
+      - name: Instalar dependências
+        run: npm install  # Garante que todas as dependências do Cypress sejam instaladas
+
+      - name: Executar testes Cypress
         uses: cypress-io/github-action@v6
+        with:
+          runTests: true  # Garante que os testes sejam executados
