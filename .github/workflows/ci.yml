@@ -5,9 +5,6 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
-      - name: List files
-        run: ls -R
-        
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -17,4 +14,5 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
+          working-directory: cypress-do-zero-a-nuvem  # <-- Se a pasta raiz for diferente, ajuste aqui
           spec: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}"
