@@ -1,5 +1,6 @@
 name: End-to-end tests
 on: push
+
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
@@ -8,9 +9,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        working-directory: cypress-do-zero-a-nuvem
         run: npm install
 
       - name: Run Cypress tests
-        working-directory: cypress-do-zero-a-nuvem
-        run: npx cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          spec: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}"
